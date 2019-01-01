@@ -14,7 +14,11 @@
 
 		<div class="pag-count" id="group-mem-requests-count-top">
 
-			<?php bp_group_requests_pagination_count(); ?>
+			<?php
+			bp_group_requests_pagination_count();
+
+			echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+			?>
 
 		</div>
 
@@ -27,7 +31,10 @@
 	</div>
 
 	<ul id="request-list" class="item-list">
-		<?php while ( bp_group_membership_requests() ) : bp_group_the_membership_request(); ?>
+		<?php
+		while ( bp_group_membership_requests() ) :
+			bp_group_the_membership_request();
+			?>
 
 			<li>
 				<?php bp_group_request_user_avatar_thumb(); ?>
@@ -41,13 +48,42 @@
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_group_membership_requests_admin_item' ); ?>
+				do_action( 'bp_group_membership_requests_admin_item' );
+				?>
 
 				<div class="action">
 
-					<?php bp_button( array( 'id' => 'group_membership_accept', 'component' => 'groups', 'wrapper_class' => 'accept', 'link_href' => bp_get_group_request_accept_link(), 'link_title' => __( 'Accept', 'buddypress' ), 'link_text' => __( 'Accept', 'buddypress' ) ) ); ?>
+					<?php
+					bp_button(
+						array(
+							'id'            => 'group_membership_accept',
+							'component'     => 'groups',
+							'wrapper_class' => 'accept',
+							'link_href'     => bp_get_group_request_accept_link(),
+							'link_title'    => __( 'Accept', 'buddypress' ),
+							'link_text'     => __(
+								'Accept',
+								'buddypress'
+							),
+						)
+					);
+					?>
 
-					<?php bp_button( array( 'id' => 'group_membership_reject', 'component' => 'groups', 'wrapper_class' => 'reject', 'link_href' => bp_get_group_request_reject_link(), 'link_title' => __( 'Reject', 'buddypress' ), 'link_text' => __( 'Reject', 'buddypress' ) ) ); ?>
+					<?php
+					bp_button(
+						array(
+							'id'            => 'group_membership_reject',
+							'component'     => 'groups',
+							'wrapper_class' => 'reject',
+							'link_href'     => bp_get_group_request_reject_link(),
+							'link_title'    => __( 'Reject', 'buddypress' ),
+							'link_text'     => __(
+								'Reject',
+								'buddypress'
+							),
+						)
+					);
+					?>
 
 					<?php
 
@@ -56,7 +92,8 @@
 					 *
 					 * @since 1.1.0
 					 */
-					do_action( 'bp_group_membership_requests_admin_item_action' ); ?>
+					do_action( 'bp_group_membership_requests_admin_item_action' );
+					?>
 
 				</div>
 			</li>
@@ -80,7 +117,7 @@
 
 	</div>
 
-	<?php else: ?>
+	<?php else : ?>
 
 		<div id="message" class="info">
 			<p><?php _e( 'There are no pending membership requests.', 'buddypress' ); ?></p>

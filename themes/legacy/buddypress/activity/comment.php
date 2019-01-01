@@ -14,7 +14,10 @@
  *
  * @since 1.5.0
  */
-do_action( 'bp_before_activity_comment' ); ?>
+do_action( 'bp_before_activity_comment' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <li id="acomment-<?php bp_activity_comment_id(); ?>">
 	<div class="acomment-avatar">
@@ -53,7 +56,8 @@ do_action( 'bp_before_activity_comment' ); ?>
 		 *
 		 * @since 1.6.0
 		 */
-		do_action( 'bp_activity_comment_options' ); ?>
+		do_action( 'bp_activity_comment_options' );
+		?>
 
 	</div>
 

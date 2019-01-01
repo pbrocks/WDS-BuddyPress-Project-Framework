@@ -13,12 +13,16 @@
 
 		<?php
 
+
+		echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+
 		/**
 		 * Fires inside the syndication options list, after the RSS option.
 		 *
 		 * @since 1.2.0
 		 */
-		do_action( 'bp_group_activity_syndication_options' ); ?>
+		do_action( 'bp_group_activity_syndication_options' );
+		?>
 
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
@@ -34,7 +38,8 @@
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_group_activity_filter_options' ); ?>
+				do_action( 'bp_group_activity_filter_options' );
+				?>
 			</select>
 		</li>
 	</ul>
@@ -47,7 +52,8 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_group_activity_post_form' ); ?>
+do_action( 'bp_before_group_activity_post_form' );
+?>
 
 <?php if ( is_user_logged_in() && bp_group_is_member() ) : ?>
 
@@ -62,7 +68,8 @@ do_action( 'bp_before_group_activity_post_form' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_after_group_activity_post_form' ); ?>
+do_action( 'bp_after_group_activity_post_form' );
+?>
 <?php
 
 /**
@@ -70,7 +77,8 @@ do_action( 'bp_after_group_activity_post_form' ); ?>
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_group_activity_content' ); ?>
+do_action( 'bp_before_group_activity_content' );
+?>
 
 <div class="activity single-group">
 

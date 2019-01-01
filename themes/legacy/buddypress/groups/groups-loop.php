@@ -17,7 +17,10 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_groups_loop' ); ?>
+do_action( 'bp_before_groups_loop' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
 
@@ -44,11 +47,15 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_groups_list' ); ?>
+	do_action( 'bp_before_directory_groups_list' );
+	?>
 
 	<ul id="groups-list" class="item-list">
 
-	<?php while ( bp_groups() ) : bp_the_group(); ?>
+	<?php
+	while ( bp_groups() ) :
+		bp_the_group();
+		?>
 
 		<li <?php bp_group_class(); ?>>
 			<?php if ( ! bp_disable_group_avatar_uploads() ) : ?>
@@ -70,7 +77,8 @@ do_action( 'bp_before_groups_loop' ); ?>
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_directory_groups_item' ); ?>
+				do_action( 'bp_directory_groups_item' );
+				?>
 
 			</div>
 
@@ -83,7 +91,8 @@ do_action( 'bp_before_groups_loop' ); ?>
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_directory_groups_actions' ); ?>
+				do_action( 'bp_directory_groups_actions' );
+				?>
 
 				<div class="meta">
 
@@ -107,7 +116,8 @@ do_action( 'bp_before_groups_loop' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_after_directory_groups_list' ); ?>
+	do_action( 'bp_after_directory_groups_list' );
+	?>
 
 	<div id="pag-bottom" class="pagination">
 
@@ -125,7 +135,7 @@ do_action( 'bp_before_groups_loop' ); ?>
 
 	</div>
 
-<?php else: ?>
+<?php else : ?>
 
 	<div id="message" class="info">
 		<p><?php _e( 'There were no groups found.', 'buddypress' ); ?></p>

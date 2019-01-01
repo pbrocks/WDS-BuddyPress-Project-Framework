@@ -47,10 +47,13 @@ function bpf_autoload_classes( $class_name ) {
 		return;
 	}
 
-	$filename = strtolower( str_replace(
-		'_', '-',
-		substr( $class_name, strlen( 'BPPF_' ) )
-	) );
+	$filename = strtolower(
+		str_replace(
+			'_',
+			'-',
+			substr( $class_name, strlen( 'BPPF_' ) )
+		)
+	);
 
 	BuddyPress_Project_Framework::include_file( $filename );
 }
@@ -192,12 +195,11 @@ class BuddyPress_Project_Framework {
 	public function init() {
 		if ( $this->check_requirements() ) {
 			load_plugin_textdomain( 'buddypress-project-framework', false, dirname( $this->basename ) . '/languages/' );
-			//add_action( 'bp_include', '' );
-
-			if ( file_exists(  __DIR__ . '/cmb2/init.php' ) ) {
-			  require_once  __DIR__ . '/cmb2/init.php';
-			} elseif ( file_exists(  __DIR__ . '/CMB2/init.php' ) ) {
-			  require_once  __DIR__ . '/CMB2/init.php';
+			// add_action( 'bp_include', '' );
+			if ( file_exists( __DIR__ . '/cmb2/init.php' ) ) {
+				require_once __DIR__ . '/cmb2/init.php';
+			} elseif ( file_exists( __DIR__ . '/CMB2/init.php' ) ) {
+				require_once __DIR__ . '/CMB2/init.php';
 			}
 		}
 	}
@@ -233,7 +235,7 @@ class BuddyPress_Project_Framework {
 	public static function meets_requirements() {
 		// Do checks for required classes / functions
 		// function_exists('') & class_exists('')
-		if( !class_exists('BuddyPress') ) {
+		if ( ! class_exists( 'BuddyPress' ) ) {
 			return false;
 		}
 		// We have met all requirements
@@ -270,7 +272,7 @@ class BuddyPress_Project_Framework {
 			case 'path':
 				return $this->$field;
 			default:
-				throw new Exception( 'Invalid '. __CLASS__ .' property: ' . $field );
+				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );
 		}
 	}
 
@@ -278,13 +280,13 @@ class BuddyPress_Project_Framework {
 	 * Include a file from the includes directory
 	 *
 	 * @since  0.1.0
-	 * @param  string  $filename Name of the file to be included
+	 * @param  string $filename Name of the file to be included
 	 * @return bool    Result of include call.
 	 */
 	public static function include_file( $filename ) {
-		$file = self::dir( 'includes/class-'. $filename .'.php' );
+		$file = self::dir( 'includes/class-' . $filename . '.php' );
 		if ( file_exists( $file ) ) {
-			return include_once( $file );
+			return include_once $file;
 		}
 		return false;
 	}
@@ -340,70 +342,86 @@ add_action( 'plugins_loaded', array( bpf(), 'hooks' ) );
  */
 function bppf_run_extended_settings() {
 
-	$options = get_option('bppf_options');
+	$options = get_option( 'bppf_options' );
 
-	foreach( $options as $key => $value ) {
+	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
-			case 'avatar_thumb_size_select' :
-				if( !defined('BP_AVATAR_THUMB_WIDTH') )
-					define ( 'BP_AVATAR_THUMB_WIDTH', (int) $options[$key] );
-				if( !defined('BP_AVATAR_THUMB_HEIGHT') )
-					define ( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[$key] );
-			break;
-			case 'avatar_full_size_select' :
-				if( !defined('BP_AVATAR_FULL_WIDTH') )
-					define ( 'BP_AVATAR_FULL_WIDTH', (int) $options[$key] );
-				if( !defined('BP_AVATAR_FULL_HEIGHT') )
-					define ( 'BP_AVATAR_FULL_HEIGHT', (int) $options[$key] );
-			break;
-			case 'avatar_max_size_select' :
-				if( !defined('BP_AVATAR_ORIGINAL_MAX_WIDTH') )
-					define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[$key] );
-			break;
-			case 'avatar_default_image' :
-				if( !defined('BP_AVATAR_DEFAULT') )
-					define ( 'BP_AVATAR_DEFAULT', $options[$key] );
-				if( !defined('BP_AVATAR_DEFAULT_THUMB') )
-					define ( 'BP_AVATAR_DEFAULT_THUMB', $options[$key] );
-			break;
+			case 'avatar_thumb_size_select':
+				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) ) {
+					define( 'BP_AVATAR_THUMB_WIDTH', (int) $options[ $key ] );
+				}
+				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
+					define( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[ $key ] );
+				}
+				break;
+			case 'avatar_full_size_select':
+				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
+					define( 'BP_AVATAR_FULL_WIDTH', (int) $options[ $key ] );
+				}
+				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
+					define( 'BP_AVATAR_FULL_HEIGHT', (int) $options[ $key ] );
+				}
+				break;
+			case 'avatar_max_size_select':
+				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) ) {
+					define( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[ $key ] );
+				}
+				break;
+			case 'avatar_default_image':
+				if ( ! defined( 'BP_AVATAR_DEFAULT' ) ) {
+					define( 'BP_AVATAR_DEFAULT', $options[ $key ] );
+				}
+				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) ) {
+					define( 'BP_AVATAR_DEFAULT_THUMB', $options[ $key ] );
+				}
+				break;
 			// advanced options
-			case 'root_profiles_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_ROOT_PROFILES') )
-					define ( 'BP_ENABLE_ROOT_PROFILES', true );
-			break;
-			case 'cover_image_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_DTHEME_DISABLE_CUSTOM_HEADER') )
-					define ( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
-			break;
-			case 'group_auto_join_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_DISABLE_AUTO_GROUP_JOIN') )
-					define ( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
-			break;
-			case 'ldap_username_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_USERNAME_COMPATIBILITY_MODE') )
-					define ( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
-			break;
-			case 'wysiwyg_editor_checkbox' :
-				if( 'on' === $options[$key] && !defined('NO_MEDIA_POST_FORM') )
-					define ( 'NO_MEDIA_POST_FORM', true );
-			break;
-			case 'all_autocomplete_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_MESSAGES_AUTOCOMPLETE_ALL') )
-					define ( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
-			break;
-			case 'depricated_code_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_IGNORE_DEPRECATED') )
-					define ( 'BP_IGNORE_DEPRECATED', true );
-			break;
+			case 'root_profiles_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) ) {
+					define( 'BP_ENABLE_ROOT_PROFILES', true );
+				}
+				break;
+			case 'cover_image_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) ) {
+					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
+				}
+				break;
+			case 'group_auto_join_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) ) {
+					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
+				}
+				break;
+			case 'ldap_username_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) ) {
+					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
+				}
+				break;
+			case 'wysiwyg_editor_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'NO_MEDIA_POST_FORM' ) ) {
+					define( 'NO_MEDIA_POST_FORM', true );
+				}
+				break;
+			case 'all_autocomplete_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) ) {
+					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				}
+				break;
+			case 'depricated_code_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) ) {
+					define( 'BP_IGNORE_DEPRECATED', true );
+				}
+				break;
 			// multisite options
-			case 'enable_multiblog_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_MULTIBLOG') )
-					define ( 'BP_ENABLE_MULTIBLOG', true );
-			break;
-			case 'root_blog_select' :
-				if( 'on' === $options[$key] && !defined('BP_ROOT_BLOG') )
-					define ( 'BP_ROOT_BLOG', (int) $options[$key] );
-			break;
+			case 'enable_multiblog_checkbox':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
+					define( 'BP_ENABLE_MULTIBLOG', true );
+				}
+				break;
+			case 'root_blog_select':
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ROOT_BLOG' ) ) {
+					define( 'BP_ROOT_BLOG', (int) $options[ $key ] );
+				}
+				break;
 		}
 	}
 
@@ -419,18 +437,20 @@ add_action( 'plugins_loaded', 'bppf_run_extended_settings' );
  */
 function bppf_run_bp_included_settings() {
 
-	$options = get_option('bppf_options');
+	$options = get_option( 'bppf_options' );
 
-	foreach( $options as $key => $value ) {
+	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
-			case 'profile_autolink_checkbox' :
-				if( 'on' === $options[$key] )
+			case 'profile_autolink_checkbox':
+				if ( 'on' === $options[ $key ] ) {
 					add_action( 'bp_init', 'bppf_remove_xprofile_links' );
-			break;
-			case 'user_mentions_checkbox' :
-				if( 'on' === $options[$key] )
+				}
+				break;
+			case 'user_mentions_checkbox':
+				if ( 'on' === $options[ $key ] ) {
 					add_action( 'bp_init', 'bppf_remove_user_mentions' );
-			break;
+				}
+				break;
 		}
 	}
 
@@ -439,6 +459,7 @@ add_action( 'bp_include', 'bppf_run_bp_included_settings' );
 
 /**
  * bppf_remove_xprofile_links
+ *
  * @return void
  */
 function bppf_remove_xprofile_links() {
@@ -447,8 +468,9 @@ function bppf_remove_xprofile_links() {
 
 /**
  * bppf_remove_user_mentions
+ *
  * @return void
  */
 function bppf_remove_user_mentions() {
-	add_filter('bp_activity_do_mentions', '__return_false');
+	add_filter( 'bp_activity_do_mentions', '__return_false' );
 }

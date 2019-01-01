@@ -11,7 +11,10 @@
  *
  * @since 1.5.0
  */
-do_action( 'bp_before_directory_groups_page' ); ?>
+do_action( 'bp_before_directory_groups_page' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <div id="buddypress">
 
@@ -22,7 +25,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_groups' ); ?>
+	do_action( 'bp_before_directory_groups' );
+	?>
 
 	<?php
 
@@ -31,7 +35,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_groups_content' ); ?>
+	do_action( 'bp_before_directory_groups_content' );
+	?>
 
 	<div id="group-dir-search" class="dir-search" role="search">
 		<?php bp_directory_groups_search_form(); ?>
@@ -42,7 +47,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 		<?php
 
 		/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
-		do_action( 'template_notices' ); ?>
+		do_action( 'template_notices' );
+		?>
 
 		<div class="item-list-tabs" role="navigation">
 			<ul>
@@ -59,7 +65,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 				 *
 				 * @since 1.5.0
 				 */
-				do_action( 'bp_groups_directory_group_filter' ); ?>
+				do_action( 'bp_groups_directory_group_filter' );
+				?>
 
 			</ul>
 		</div><!-- .item-list-tabs -->
@@ -73,7 +80,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_groups_directory_group_types' ); ?>
+				do_action( 'bp_groups_directory_group_types' );
+				?>
 
 				<li id="groups-order-select" class="last filter">
 
@@ -92,7 +100,8 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 						 *
 						 * @since 1.2.0
 						 */
-						do_action( 'bp_groups_directory_order_options' ); ?>
+						do_action( 'bp_groups_directory_order_options' );
+						?>
 					</select>
 				</li>
 			</ul>
@@ -105,33 +114,36 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 		<?php
 
 		/**
- 		 * Fires and displays the group content.
- 		 *
- 		 * @since 1.1.0
- 		 */
-		do_action( 'bp_directory_groups_content' ); ?>
+		 * Fires and displays the group content.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'bp_directory_groups_content' );
+		?>
 
 		<?php wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' ); ?>
 
 		<?php
 
 		/**
- 		 * Fires after the display of the groups content.
- 		 *
- 		 * @since 1.1.0
- 		 */
-		do_action( 'bp_after_directory_groups_content' ); ?>
+		 * Fires after the display of the groups content.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'bp_after_directory_groups_content' );
+		?>
 
 	</form><!-- #groups-directory-form -->
 
 	<?php
 
 	/**
- 	 * Fires after the display of the groups.
- 	 *
- 	 * @since 1.1.0
- 	 */
-	do_action( 'bp_after_directory_groups' ); ?>
+	 * Fires after the display of the groups.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'bp_after_directory_groups' );
+	?>
 
 </div><!-- #buddypress -->
 

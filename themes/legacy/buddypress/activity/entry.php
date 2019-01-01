@@ -14,7 +14,10 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_activity_entry' ); ?>
+do_action( 'bp_before_activity_entry' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <li class="<?php bp_activity_css_class(); ?>" id="activity-<?php bp_activity_id(); ?>">
 	<div class="activity-avatar">
@@ -50,7 +53,8 @@ do_action( 'bp_before_activity_entry' ); ?>
 		 *
 		 * @since 1.2.0
 		 */
-		do_action( 'bp_activity_entry_content' ); ?>
+		do_action( 'bp_activity_entry_content' );
+		?>
 
 		<div class="activity-meta">
 
@@ -70,7 +74,7 @@ do_action( 'bp_before_activity_entry' ); ?>
 
 				<?php if ( bp_activity_can_favorite() ) : ?>
 
-					<?php if ( !bp_get_activity_is_favorite() ) : ?>
+					<?php if ( ! bp_get_activity_is_favorite() ) : ?>
 
 						<a href="<?php bp_activity_favorite_link(); ?>" class="button fav bp-secondary-action" title="<?php esc_attr_e( 'Mark as Favorite', 'buddypress' ); ?>"><?php _e( 'Favorite', 'buddypress' ); ?></a>
 
@@ -82,7 +86,10 @@ do_action( 'bp_before_activity_entry' ); ?>
 
 				<?php endif; ?>
 
-				<?php if ( bp_activity_user_can_delete() ) bp_activity_delete_link(); ?>
+				<?php
+				if ( bp_activity_user_can_delete() ) {
+					bp_activity_delete_link();}
+				?>
 
 				<?php
 
@@ -91,7 +98,8 @@ do_action( 'bp_before_activity_entry' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_activity_entry_meta' ); ?>
+				do_action( 'bp_activity_entry_meta' );
+				?>
 
 			<?php endif; ?>
 
@@ -106,7 +114,8 @@ do_action( 'bp_before_activity_entry' ); ?>
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_before_activity_entry_comments' ); ?>
+	do_action( 'bp_before_activity_entry_comments' );
+	?>
 
 	<?php if ( ( bp_activity_get_comment_count() || bp_activity_can_comment() ) || bp_is_single_activity() ) : ?>
 
@@ -134,7 +143,8 @@ do_action( 'bp_before_activity_entry' ); ?>
 					 *
 					 * @since 1.5.0
 					 */
-					do_action( 'bp_activity_entry_comments' ); ?>
+					do_action( 'bp_activity_entry_comments' );
+					?>
 
 					<?php wp_nonce_field( 'new_activity_comment', '_wpnonce_new_activity_comment' ); ?>
 
@@ -153,7 +163,8 @@ do_action( 'bp_before_activity_entry' ); ?>
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_after_activity_entry_comments' ); ?>
+	do_action( 'bp_after_activity_entry_comments' );
+	?>
 
 </li>
 

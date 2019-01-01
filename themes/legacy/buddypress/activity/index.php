@@ -13,7 +13,10 @@
  *
  * @since 1.5.0
  */
-do_action( 'bp_before_directory_activity' ); ?>
+do_action( 'bp_before_directory_activity' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <div id="buddypress">
 
@@ -24,7 +27,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_before_directory_activity_content' ); ?>
+	do_action( 'bp_before_directory_activity_content' );
+	?>
 
 	<?php if ( is_user_logged_in() ) : ?>
 
@@ -39,7 +43,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'template_notices' ); ?>
+	do_action( 'template_notices' );
+	?>
 
 	<div class="item-list-tabs activity-type-tabs" role="navigation">
 		<ul>
@@ -50,7 +55,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 			 *
 			 * @since 1.2.0
 			 */
-			do_action( 'bp_before_activity_type_tab_all' ); ?>
+			do_action( 'bp_before_activity_type_tab_all' );
+			?>
 
 			<li class="selected" id="activity-all"><a href="<?php bp_activity_directory_permalink(); ?>" title="<?php esc_attr_e( 'The public activity for everyone on this site.', 'buddypress' ); ?>"><?php printf( __( 'All Members %s', 'buddypress' ), '<span>' . bp_get_total_member_count() . '</span>' ); ?></a></li>
 
@@ -63,7 +69,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_before_activity_type_tab_friends' ); ?>
+				do_action( 'bp_before_activity_type_tab_friends' );
+				?>
 
 				<?php if ( bp_is_active( 'friends' ) ) : ?>
 
@@ -82,7 +89,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_before_activity_type_tab_groups' ); ?>
+				do_action( 'bp_before_activity_type_tab_groups' );
+				?>
 
 				<?php if ( bp_is_active( 'groups' ) ) : ?>
 
@@ -101,7 +109,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_before_activity_type_tab_favorites' ); ?>
+				do_action( 'bp_before_activity_type_tab_favorites' );
+				?>
 
 				<?php if ( bp_get_total_favorite_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
@@ -118,9 +127,14 @@ do_action( 'bp_before_directory_activity' ); ?>
 					 *
 					 * @since 1.2.0
 					 */
-					do_action( 'bp_before_activity_type_tab_mentions' ); ?>
+					do_action( 'bp_before_activity_type_tab_mentions' );
+					?>
 
-					<li id="activity-mentions"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/'; ?>" title="<?php esc_attr_e( 'Activity that I have been mentioned in.', 'buddypress' ); ?>"><?php _e( 'Mentions', 'buddypress' ); ?><?php if ( bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ) : ?> <strong><span><?php printf( _nx( '%s new', '%s new', bp_get_total_mention_count_for_user( bp_loggedin_user_id() ), 'Number of new activity mentions', 'buddypress' ), bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ); ?></span></strong><?php endif; ?></a></li>
+					<li id="activity-mentions"><a href="<?php echo bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/'; ?>" title="<?php esc_attr_e( 'Activity that I have been mentioned in.', 'buddypress' ); ?>"><?php _e( 'Mentions', 'buddypress' ); ?>
+																   <?php
+																	if ( bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ) :
+																		?>
+						 <strong><span><?php printf( _nx( '%s new', '%s new', bp_get_total_mention_count_for_user( bp_loggedin_user_id() ), 'Number of new activity mentions', 'buddypress' ), bp_get_total_mention_count_for_user( bp_loggedin_user_id() ) ); ?></span></strong><?php endif; ?></a></li>
 
 				<?php endif; ?>
 
@@ -133,7 +147,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 			 *
 			 * @since 1.2.0
 			 */
-			do_action( 'bp_activity_type_tabs' ); ?>
+			do_action( 'bp_activity_type_tabs' );
+			?>
 		</ul>
 	</div><!-- .item-list-tabs -->
 
@@ -148,7 +163,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 			 *
 			 * @since 1.2.0
 			 */
-			do_action( 'bp_activity_syndication_options' ); ?>
+			do_action( 'bp_activity_syndication_options' );
+			?>
 
 			<li id="activity-filter-select" class="last">
 				<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
@@ -164,7 +180,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 					 *
 					 * @since 1.2.0
 					 */
-					do_action( 'bp_activity_filter_options' ); ?>
+					do_action( 'bp_activity_filter_options' );
+					?>
 
 				</select>
 			</li>
@@ -178,7 +195,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_before_directory_activity_list' ); ?>
+	do_action( 'bp_before_directory_activity_list' );
+	?>
 
 	<div class="activity">
 
@@ -193,14 +211,16 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_after_directory_activity_list' ); ?>
+	do_action( 'bp_after_directory_activity_list' );
+	?>
 
 	<?php
 
 	/**
 	 * Fires inside and displays the activity directory display content.
 	 */
-	do_action( 'bp_directory_activity_content' ); ?>
+	do_action( 'bp_directory_activity_content' );
+	?>
 
 	<?php
 
@@ -209,7 +229,8 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_after_directory_activity_content' ); ?>
+	do_action( 'bp_after_directory_activity_content' );
+	?>
 
 	<?php
 
@@ -218,6 +239,7 @@ do_action( 'bp_before_directory_activity' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_after_directory_activity' ); ?>
+	do_action( 'bp_after_directory_activity' );
+	?>
 
 </div>

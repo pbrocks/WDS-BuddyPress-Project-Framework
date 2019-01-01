@@ -13,8 +13,9 @@
  * @subpackage bp-attachments
  */
 
-?>
 
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 <div class="bp-cover-image"></div>
 <div class="bp-cover-image-status"></div>
 <div class="bp-cover-image-manage"></div>

@@ -11,7 +11,10 @@
  *
  * @since 2.3.0
  */
-do_action( 'bp_before_directory_blogs_page' ); ?>
+do_action( 'bp_before_directory_blogs_page' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <div id="buddypress">
 
@@ -22,7 +25,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_before_directory_blogs' ); ?>
+	do_action( 'bp_before_directory_blogs' );
+	?>
 
 	<?php
 
@@ -31,7 +35,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.1.0
 	 */
-	do_action( 'bp_before_directory_blogs_content' ); ?>
+	do_action( 'bp_before_directory_blogs_content' );
+	?>
 
 	<div id="blog-dir-search" class="dir-search" role="search">
 		<?php bp_directory_blogs_search_form(); ?>
@@ -44,7 +49,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 2.3.0
 	 */
-	do_action( 'bp_before_directory_blogs_tabs' ); ?>
+	do_action( 'bp_before_directory_blogs_tabs' );
+	?>
 
 	<form action="" method="post" id="blogs-directory-form" class="dir-form">
 
@@ -65,7 +71,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_blogs_directory_blog_types' ); ?>
+				do_action( 'bp_blogs_directory_blog_types' );
+				?>
 
 			</ul>
 		</div><!-- .item-list-tabs -->
@@ -80,7 +87,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 				 *
 				 * @since 1.5.0
 				 */
-				do_action( 'bp_blogs_directory_blog_sub_types' ); ?>
+				do_action( 'bp_blogs_directory_blog_sub_types' );
+				?>
 
 				<li id="blogs-order-select" class="last filter">
 
@@ -97,7 +105,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 						 *
 						 * @since 1.2.0
 						 */
-						do_action( 'bp_blogs_directory_order_options' ); ?>
+						do_action( 'bp_blogs_directory_order_options' );
+						?>
 
 					</select>
 				</li>
@@ -117,7 +126,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_directory_blogs_content' ); ?>
+		do_action( 'bp_directory_blogs_content' );
+		?>
 
 		<?php wp_nonce_field( 'directory_blogs', '_wpnonce-blogs-filter' ); ?>
 
@@ -128,7 +138,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 		 *
 		 * @since 1.1.0
 		 */
-		do_action( 'bp_after_directory_blogs_content' ); ?>
+		do_action( 'bp_after_directory_blogs_content' );
+		?>
 
 	</form><!-- #blogs-directory-form -->
 
@@ -139,7 +150,8 @@ do_action( 'bp_before_directory_blogs_page' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_after_directory_blogs' ); ?>
+	do_action( 'bp_after_directory_blogs' );
+	?>
 
 </div>
 

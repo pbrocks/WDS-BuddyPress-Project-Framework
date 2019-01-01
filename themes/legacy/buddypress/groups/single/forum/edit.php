@@ -11,7 +11,10 @@
  *
  * @since 1.2.4
  */
-do_action( 'bp_before_group_forum_edit_form' ); ?>
+do_action( 'bp_before_group_forum_edit_form' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <?php if ( bp_has_forum_topic_posts() ) : ?>
 
@@ -54,7 +57,8 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 			 *
 			 * @since 1.2.5
 			 */
-			do_action( 'bp_group_forum_topic_meta' ); ?>
+			do_action( 'bp_group_forum_topic_meta' );
+			?>
 
 		</div>
 
@@ -69,7 +73,8 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_group_before_edit_forum_topic' ); ?>
+				do_action( 'bp_group_before_edit_forum_topic' );
+				?>
 
 				<label for="topic_title"><?php _e( 'Title:', 'buddypress' ); ?></label>
 				<input type="text" name="topic_title" id="topic_title" value="<?php bp_the_topic_title(); ?>" maxlength="100" />
@@ -87,7 +92,8 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_group_after_edit_forum_topic' ); ?>
+				do_action( 'bp_group_after_edit_forum_topic' );
+				?>
 
 				<p class="submit"><input type="submit" name="save_changes" id="save_changes" value="<?php esc_attr_e( 'Save Changes', 'buddypress' ); ?>" /></p>
 
@@ -106,7 +112,8 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_group_before_edit_forum_post' ); ?>
+				do_action( 'bp_group_before_edit_forum_post' );
+				?>
 
 				<label for="post_text" class="bp-screen-reader-text"><?php _e( 'Edit text', 'buddypress' ); ?></label>
 				<textarea name="post_text" id="post_text"><?php bp_the_topic_post_edit_text(); ?></textarea>
@@ -118,7 +125,8 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 				 *
 				 * @since 1.2.0
 				 */
-				do_action( 'bp_group_after_edit_forum_post' ); ?>
+				do_action( 'bp_group_after_edit_forum_post' );
+				?>
 
 				<p class="submit"><input type="submit" name="save_changes" id="save_changes" value="<?php esc_attr_e( 'Save Changes', 'buddypress' ); ?>" /></p>
 
@@ -130,13 +138,13 @@ do_action( 'bp_before_group_forum_edit_form' ); ?>
 
 	</form><!-- #forum-topic-form -->
 
-<?php else: ?>
+<?php else : ?>
 
 	<div id="message" class="info">
 		<p><?php _e( 'This topic does not exist.', 'buddypress' ); ?></p>
 	</div>
 
-<?php endif;?>
+<?php endif; ?>
 
 <?php
 

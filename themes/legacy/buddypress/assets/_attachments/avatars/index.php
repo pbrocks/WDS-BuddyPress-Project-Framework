@@ -17,6 +17,8 @@
  * This action is for internal use, please do not use it
  */
 do_action( 'bp_attachments_avatar_check_template' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
 ?>
 <div class="bp-avatar-nav"></div>
 <div class="bp-avatar"></div>

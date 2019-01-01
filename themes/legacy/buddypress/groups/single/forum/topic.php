@@ -11,7 +11,10 @@
  *
  * @since 1.2.4
  */
-do_action( 'bp_before_group_forum_topic' ); ?>
+do_action( 'bp_before_group_forum_topic' );
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
 
 <form action="<?php bp_forum_topic_action(); ?>" method="post" id="forum-topic-form" class="standard-form">
 	<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
@@ -65,7 +68,8 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 		 *
 		 * @since 1.2.5
 		 */
-		do_action( 'bp_group_forum_topic_meta' ); ?>
+		do_action( 'bp_group_forum_topic_meta' );
+		?>
 
 	</div>
 
@@ -95,10 +99,14 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 		 *
 		 * @since 1.2.4
 		 */
-		do_action( 'bp_before_group_forum_topic_posts' ); ?>
+		do_action( 'bp_before_group_forum_topic_posts' );
+		?>
 
 		<ul id="topic-post-list" class="item-list">
-			<?php while ( bp_forum_topic_posts() ) : bp_the_forum_topic_post(); ?>
+			<?php
+			while ( bp_forum_topic_posts() ) :
+				bp_the_forum_topic_post();
+				?>
 
 				<li id="post-<?php bp_the_topic_post_id(); ?>" class="<?php bp_the_topic_post_css_class(); ?>">
 					<div class="poster-meta">
@@ -124,7 +132,8 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 						 *
 						 * @since 1.2.5
 						 */
-						do_action( 'bp_group_forum_post_meta' ); ?>
+						do_action( 'bp_group_forum_post_meta' );
+						?>
 
 						<a href="#post-<?php bp_the_topic_post_id(); ?>" title="<?php esc_attr_e( 'Permanent link to this post', 'buddypress' ); ?>">#</a>
 					</div>
@@ -140,7 +149,8 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 		 *
 		 * @since 1.2.4
 		 */
-		do_action( 'bp_after_group_forum_topic_posts' ); ?>
+		do_action( 'bp_after_group_forum_topic_posts' );
+		?>
 
 		<div class="pagination no-ajax">
 
@@ -154,24 +164,24 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 
 		</div>
 
-	<?php else: ?>
+	<?php else : ?>
 
 		<div id="message" class="info">
 			<p><?php _e( 'There are no posts for this topic.', 'buddypress' ); ?></p>
 		</div>
 
-	<?php endif;?>
+	<?php endif; ?>
 
 	<?php if ( ( is_user_logged_in() && 'public' == bp_get_group_status() ) || bp_group_is_member() ) : ?>
 
 		<?php if ( bp_get_the_topic_is_last_page() ) : ?>
 
-			<?php if ( bp_get_the_topic_is_topic_open() && !bp_group_is_user_banned() ) : ?>
+			<?php if ( bp_get_the_topic_is_topic_open() && ! bp_group_is_user_banned() ) : ?>
 
 				<div id="post-topic-reply">
 					<p id="post-reply"></p>
 
-					<?php if ( bp_groups_auto_join() && !bp_group_is_member() ) : ?>
+					<?php if ( bp_groups_auto_join() && ! bp_group_is_member() ) : ?>
 						<p><?php _e( 'You will auto join this group when you reply to this topic.', 'buddypress' ); ?></p>
 					<?php endif; ?>
 
@@ -182,7 +192,8 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 					 *
 					 * @since 1.0.0
 					 */
-					do_action( 'groups_forum_new_reply_before' ); ?>
+					do_action( 'groups_forum_new_reply_before' );
+					?>
 
 					<h4><?php _e( 'Add a reply:', 'buddypress' ); ?></h4>
 
@@ -200,12 +211,13 @@ do_action( 'bp_before_group_forum_topic' ); ?>
 					 *
 					 * @since 1.0.0
 					 */
-					do_action( 'groups_forum_new_reply_after' ); ?>
+					do_action( 'groups_forum_new_reply_after' );
+					?>
 
 					<?php wp_nonce_field( 'bp_forums_new_reply' ); ?>
 				</div>
 
-			<?php elseif ( !bp_group_is_user_banned() ) : ?>
+			<?php elseif ( ! bp_group_is_user_banned() ) : ?>
 
 				<div id="message" class="info">
 					<p><?php _e( 'This topic is closed, replies are no longer accepted.', 'buddypress' ); ?></p>

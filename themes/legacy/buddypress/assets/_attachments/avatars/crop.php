@@ -10,6 +10,8 @@
  * @subpackage bp-attachments
  */
 
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
 ?>
 <script id="tmpl-bp-avatar-item" type="text/html">
 	<div id="avatar-to-crop">

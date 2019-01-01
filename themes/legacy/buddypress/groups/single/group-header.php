@@ -21,7 +21,11 @@ do_action( 'bp_before_group_header' );
 
 		<h3><?php _e( 'Group Admins', 'buddypress' ); ?></h3>
 
-		<?php bp_group_list_admins();
+		<?php
+		bp_group_list_admins();
+
+
+		echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
 
 		/**
 		 * Fires after the display of the group's administrators.
@@ -37,11 +41,13 @@ do_action( 'bp_before_group_header' );
 			 *
 			 * @since 1.1.0
 			 */
-			do_action( 'bp_before_group_menu_mods' ); ?>
+			do_action( 'bp_before_group_menu_mods' );
+			?>
 
-			<h3><?php _e( 'Group Mods' , 'buddypress' ); ?></h3>
+			<h3><?php _e( 'Group Mods', 'buddypress' ); ?></h3>
 
-			<?php bp_group_list_mods();
+			<?php
+			bp_group_list_mods();
 
 			/**
 			 * Fires after the display of the group's moderators, if there are any.
@@ -52,7 +58,8 @@ do_action( 'bp_before_group_header' );
 
 		endif;
 
-	endif; ?>
+	endif;
+?>
 
 </div><!-- #item-actions -->
 
@@ -77,7 +84,8 @@ do_action( 'bp_before_group_header' );
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_before_group_header_meta' ); ?>
+	do_action( 'bp_before_group_header_meta' );
+	?>
 
 	<div id="item-meta">
 
@@ -92,7 +100,8 @@ do_action( 'bp_before_group_header' );
 			 *
 			 * @since 1.2.6
 			 */
-			do_action( 'bp_group_header_actions' ); ?>
+			do_action( 'bp_group_header_actions' );
+			?>
 
 		</div><!-- #item-buttons -->
 
@@ -103,7 +112,8 @@ do_action( 'bp_before_group_header' );
 		 *
 		 * @since 1.2.0
 		 */
-		do_action( 'bp_group_header_meta' ); ?>
+		do_action( 'bp_group_header_meta' );
+		?>
 
 	</div>
 </div><!-- #item-header-content -->
