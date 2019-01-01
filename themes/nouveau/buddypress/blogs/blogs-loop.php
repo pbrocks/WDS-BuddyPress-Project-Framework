@@ -6,7 +6,11 @@
  * @version 3.0.0
  */
 
-bp_nouveau_before_loop(); ?>
+bp_nouveau_before_loop();
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
+
 
 <?php if ( bp_has_blogs( bp_ajax_querystring( 'blogs' ) ) ) : ?>
 
@@ -17,7 +21,7 @@ bp_nouveau_before_loop(); ?>
 	<?php
 	while ( bp_blogs() ) :
 		bp_the_blog();
-	?>
+		?>
 
 		<li <?php bp_blog_class( array( 'item-entry' ) ); ?>>
 			<div class="list-wrap">

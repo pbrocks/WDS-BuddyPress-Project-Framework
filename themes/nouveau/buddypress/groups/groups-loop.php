@@ -6,7 +6,11 @@
  * @version 3.1.0
  */
 
-bp_nouveau_before_loop(); ?>
+bp_nouveau_before_loop();
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
+
 
 <?php if ( bp_get_current_group_directory_type() ) : ?>
 	<p class="current-group-type"><?php bp_current_group_directory_type_message(); ?></p>
@@ -21,7 +25,7 @@ bp_nouveau_before_loop(); ?>
 	<?php
 	while ( bp_groups() ) :
 		bp_the_group();
-	?>
+		?>
 
 		<li <?php bp_group_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_group_id(); ?>" data-bp-item-component="groups">
 			<div class="list-wrap">

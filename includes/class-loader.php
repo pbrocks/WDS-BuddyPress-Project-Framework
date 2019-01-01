@@ -5,14 +5,14 @@
  */
 class BPPF_Loader {
 
-		protected $plugin = null;
+	protected $plugin = null;
 
-    /**
-     * __construct function.
-     *
-     * @access public
-     * @return \BP_Project_Framework
-     */
+	/**
+	 * __construct function.
+	 *
+	 * @access public
+	 * @return \BP_Project_Framework
+	 */
 	public function __construct( $plugin ) {
 
 		$this->plugin = $plugin;
@@ -29,14 +29,13 @@ class BPPF_Loader {
 	 */
 	public function actions() {
 
-
 		add_action( 'bp_include', array( $this, 'includes' ) );
 
-        // these are for template file overrides.
+		// these are for template file overrides.
 		add_action( 'bp_register_theme_packages', array( $this, 'bp_custom_templatepack_work' ) );
 		add_action( 'bp_after_setup_theme', array( $this, 'bppf_register_feature' ) );
 		add_filter( 'pre_option__bp_theme_package_id', array( $this, 'bp_custom_templatepack_package_id' ) );
-		add_action( 'wp', array( $this, 'bp_templatepack_kill_legacy_js_and_css' ), 999 );
+		// add_action( 'wp', array( $this, 'bp_templatepack_kill_legacy_js_and_css' ), 999 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
@@ -48,10 +47,10 @@ class BPPF_Loader {
 	 * @return void
 	 */
 	public function includes() {
-        // to include a file place it in the inc directory
-        foreach( glob(  plugin_dir_path(__FILE__) . '/core/*.php' ) as $filename ) {
-            include $filename;
-        }
+		// to include a file place it in the inc directory
+		foreach ( glob( plugin_dir_path( __FILE__ ) . '/core/*.php' ) as $filename ) {
+			include $filename;
+		}
 	}
 
 
@@ -75,16 +74,17 @@ class BPPF_Loader {
 	 */
 	public function bp_custom_templatepack_work() {
 
-		$options = get_option('bppf_options');
+		$options = get_option( 'bppf_options' );
 
-		if( !empty( $options['template_theme_select'] ) && 'core' !== $options['template_theme_select'] ) {
+		if ( ! empty( $options['template_theme_select'] ) && 'core' !== $options['template_theme_select'] ) {
 
-			bp_register_theme_package( array(
+			bp_register_theme_package(
+				array(
 					'id'      => 'themes',
 					'name'    => __( 'Default Templates', 'buddypress' ),
 					'version' => bp_get_version(),
 					'dir'     => bpf()->path . 'themes/' . $options['template_theme_select'],
-					'url'     => bpf()->url . 'themes/' . $options['template_theme_select']
+					'url'     => bpf()->url . 'themes/' . $options['template_theme_select'],
 				)
 			);
 
@@ -94,16 +94,19 @@ class BPPF_Loader {
 	// Register the Cover Image feature for Users profiles
 	public function bppf_register_feature() {
 
-		bp_set_theme_compat_feature( 'themes', array(
-			'name'     => 'cover_image',
-			'settings' => array(
-				'components'   => array( 'xprofile' ),
-				'width'        => 940,
-				'height'       => 175,
-				'callback'     => 'bp_legacy_theme_cover_image',
-				'theme_handle' => 'bp-legacy-css',
-			),
-		) );
+		bp_set_theme_compat_feature(
+			'themes',
+			array(
+				'name'     => 'cover_image',
+				'settings' => array(
+					'components'   => array( 'xprofile' ),
+					'width'        => 940,
+					'height'       => 175,
+					'callback'     => 'bp_legacy_theme_cover_image',
+					'theme_handle' => 'bp-legacy-css',
+				),
+			)
+		);
 
 	}
 

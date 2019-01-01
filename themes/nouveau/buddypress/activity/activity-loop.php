@@ -5,7 +5,11 @@
  * @version 3.1.0
  */
 
-bp_nouveau_before_loop(); ?>
+bp_nouveau_before_loop();
+
+echo '<h4 style="color:salmon;">' . __FILE__ . '</h4>';
+?>
+
 
 <?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) : ?>
 
@@ -16,7 +20,7 @@ bp_nouveau_before_loop(); ?>
 	<?php
 	while ( bp_activities() ) :
 		bp_the_activity();
-	?>
+		?>
 
 		<?php bp_get_template_part( 'activity/entry' ); ?>
 
